@@ -13,10 +13,22 @@ Toggles = {
     this.version = version;
     this.rootURI = rootURI;
     this.initialized = true;
+
+    // Zotero.getOSVersion().then((version) => {
+    //     Toggles.macOs = version.includes("macOS");
+    // });
   },
 
   log(msg) {
-    Zotero.debug("Make It Red: " + msg);
+    Zotero.debug("Toggle-Bars: " + msg);
+  },
+
+  toggleListener(doc, key, toggle) {
+    doc.addEventListener('keydown', function(event) {
+        if ((event.ctrlKey) && event.key === key) {
+          toggle(doc);
+        }
+    });
   },
 
   addMenuItems(doc, manualPopup) {
@@ -36,6 +48,8 @@ Toggles = {
       Toggles.toggleTabBar(doc);
     });
     viewPopup.appendChild(tab_bar_item);
+    // add shortcut key
+    Toggles.toggleListener(doc, "t", () => Toggles.toggleTabBar(doc));
     this.storeAddedElement(tab_bar_item);
 
     // Annotation Tool Bar Toggle
@@ -46,6 +60,7 @@ Toggles = {
       Toggles.toggleAnnotation(annotation_tool_bar.checked);
     });
     viewPopup.appendChild(annotation_tool_bar);
+    Toggles.toggleListener(doc, "a", () => Toggles.toggleAnnotation());
     this.storeAddedElement(annotation_tool_bar);
 
     // Sidebar toggle
@@ -55,8 +70,8 @@ Toggles = {
     side_bar_toggle.addEventListener('command', () => {
       Toggles.toggleSidebar();
     });
-    
     viewPopup.appendChild(side_bar_toggle);
+    Toggles.toggleListener(doc, "b", () => Toggles.toggleSidebar());
     this.storeAddedElement(side_bar_toggle);
   },
 
@@ -135,7 +150,7 @@ Toggles = {
               Toggles.addToWindow(domWindow, true);
           }, {once: true});
       }
-  };
+    };
   
     // Add the listener to detect new windows
     Services.wm.addListener(windowListener);
