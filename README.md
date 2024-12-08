@@ -7,7 +7,7 @@ A plugin that enables you to toggle various bars in Zotero. It adds three menu b
 + Toggle Sidebar
 
 Ctrl + T to toggle the tab bar\
-Ctrl + A to toggle the annotation toolbar\
+Ctrl + Y to toggle the annotation toolbar\
 Ctrl + B to toggle the Sidebar
 
 # Installation
