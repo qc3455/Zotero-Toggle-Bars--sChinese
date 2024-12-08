@@ -1,8 +1,8 @@
 toggle-tab =
-    .label = Toggle Tab Bar
+    .label = 切换标签栏
 
 toggle-ann =
-    .label = Toggle Annotation Toolbar
+    .label = 切换注释工具栏
 
 toggle-sidebar =
-    .label = Toggle Sidebar
+    .label = 切换侧边栏

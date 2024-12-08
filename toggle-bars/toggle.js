@@ -60,7 +60,7 @@ Toggles = {
       Toggles.toggleAnnotation(annotation_tool_bar.checked);
     });
     viewPopup.appendChild(annotation_tool_bar);
-    Toggles.toggleListener(doc, "a", () => Toggles.toggleAnnotation());
+    Toggles.toggleListener(doc, "y", () => Toggles.toggleAnnotation());
     this.storeAddedElement(annotation_tool_bar);
 
     // Sidebar toggle
